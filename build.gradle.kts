@@ -10,10 +10,10 @@ buildscript {
     }
 
     dependencies {
-        classpath("com.android.tools.build:gradle:8.1.1")
+        classpath("com.android.tools.build:gradle:8.2.2")
         // Cloudstream gradle plugin which makes everything work and builds plugins
         classpath("com.github.recloudstream:gradle:master-SNAPSHOT")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.24")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0")
     }
 }
 
@@ -68,7 +68,7 @@ subprojects {
     }
 
     dependencies {
-        val apk by configurations
+        val apk by configurations.creating
         val implementation by configurations
 
         // Stubs for all Cloudstream classes
