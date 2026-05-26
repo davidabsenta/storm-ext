@@ -145,10 +145,12 @@ class SoloLatinoProvider : MainAPI() {
     ): Boolean {
         val regex = """(go_to_player|go_to_playerVast)\('(.*?)'""".toRegex()
         app.get(data).document.selectFirst("iframe")?.attr("src")?.let { frameUrl ->
-            regex.findAll(app.get(frameUrl).document.html()).map { it.groupValues.get(2) }.toList().apmap {
-                loadExtractor(it, data, subtitleCallback, callback)
-            }
-        }
+           regex.findAll(frameUrl.html()).toList().apmap {
+               val raw = it.groupValues[2]
+               if (raw.startsWith("http")) {
+                   loadExtractor(raw, data, subtitleCallback, callback)
+               }
+           }
         return true
     }
 

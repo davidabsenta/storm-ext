@@ -130,10 +130,12 @@ class AnimeJlProvider : MainAPI() {
         val regex = """(<iframe src=)"(.*?)"""".toRegex()
         app.get(data).document.select("script")
             .firstOrNull { it.html().contains("var video = [];") }?.let { frameUrl ->
-            regex.findAll(frameUrl.html()).map { it.groupValues.get(2) }.toList().apmap {
-                loadExtractor(it, data, subtitleCallback, callback)
+            regex.findAll(frameUrl.html()).toList().apmap {
+                val raw = it.groupValues[2]
+                if (raw.startsWith("http")) {
+                    loadExtractor(raw, data, subtitleCallback, callback)
+                }
             }
-        }
         return true
     }
 
