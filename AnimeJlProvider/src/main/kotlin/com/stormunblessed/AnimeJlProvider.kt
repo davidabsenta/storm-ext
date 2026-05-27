@@ -136,6 +136,7 @@ class AnimeJlProvider : MainAPI() {
                     loadExtractor(raw, data, subtitleCallback, callback)
                 }
             }
+        }
         return true
     }
 
