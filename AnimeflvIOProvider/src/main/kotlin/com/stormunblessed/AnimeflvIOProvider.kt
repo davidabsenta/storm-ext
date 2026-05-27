@@ -59,7 +59,7 @@ class AnimeflvIOProvider:MainAPI() {
             items.add(HomePageList(name, home))
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
+        if (items.size <= 0) throw Exception("Error loading")
         return HomePageResponse(items)
     }
 
