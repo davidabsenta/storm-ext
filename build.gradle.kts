@@ -43,7 +43,10 @@ subprojects {
     }
 
     android {
+        android {
         compileSdkVersion(35)
+
+        namespace = "com.stormunblessed.${project.name.lowercase()}"
 
         defaultConfig {
             minSdk = 21
