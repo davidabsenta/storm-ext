@@ -9,6 +9,7 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("DEPRECATION")
 class ComamosRamenProvider : MainAPI() {
     override var mainUrl = "https://m.comamosramen.com"
     override var name = "ComamosRamen"
@@ -87,8 +88,8 @@ class ComamosRamenProvider : MainAPI() {
             }
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     data class SearchOb (

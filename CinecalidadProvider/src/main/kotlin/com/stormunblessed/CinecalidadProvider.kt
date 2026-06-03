@@ -5,6 +5,7 @@ import com.lagradost.cloudstream3.extractors.Cinestart
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class CinecalidadProvider : MainAPI() {
     override var mainUrl = "https://www.cinecalidad.ec"
     override var name = "Cinecalidad"

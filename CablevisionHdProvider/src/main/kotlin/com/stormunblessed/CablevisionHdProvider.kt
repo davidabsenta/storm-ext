@@ -7,6 +7,7 @@ import com.lagradost.cloudstream3.utils.JsUnpacker
 import com.lagradost.cloudstream3.utils.getQualityFromName
 import java.net.URL
 
+@Suppress("DEPRECATION")
 class CablevisionHdProvider : MainAPI() {
 
     override var mainUrl = "https://www.cablevisionhd.com"
@@ -251,7 +252,7 @@ class CablevisionHdProvider : MainAPI() {
             items.add(HomePageList(name, home, true))
         }
 
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

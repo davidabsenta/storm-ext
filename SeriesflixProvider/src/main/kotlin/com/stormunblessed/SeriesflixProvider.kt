@@ -6,6 +6,7 @@ import com.lagradost.cloudstream3.mvvm.logError
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class SeriesflixProvider : MainAPI() {
     override var mainUrl = "https://seriesflix.fit"
     override var name = "Seriesflix"
@@ -45,8 +46,8 @@ class SeriesflixProvider : MainAPI() {
 
             items.add(HomePageList(name, home))
         }
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

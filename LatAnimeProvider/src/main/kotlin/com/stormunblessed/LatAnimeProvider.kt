@@ -9,6 +9,7 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 import java.util.*
 
 
+@Suppress("DEPRECATION")
 class LatAnimeProvider : MainAPI() {
     companion object {
         fun getType(t: String): TvType {
@@ -38,7 +39,7 @@ class LatAnimeProvider : MainAPI() {
 
     private val cloudflareKiller = CloudflareKiller()
     suspend fun appGetChildMainUrl(url: String): NiceResponse {
-        return app.get(url, interceptor = cloudflareKiller )
+        return app.get(url )
     }
 
     override suspend fun getMainPage(page: Int, request: MainPageRequest): HomePageResponse {
@@ -70,7 +71,6 @@ class LatAnimeProvider : MainAPI() {
 //                            newAnimeSearchResponse(title, url) {
 //                                this.posterUrl = fixUrl(poster)
 //                                addDubStatus(getDubStatus(title), epNum)
-//                                this.posterHeaders = if (poster.contains(mainUrl)) cloudflareKiller.getCookieHeaders(mainUrl).toMap() else emptyMap<String, String>()
 //                            }
 //                        }, isHorizontal)
 //        )
@@ -85,15 +85,14 @@ class LatAnimeProvider : MainAPI() {
                 newAnimeSearchResponse(title, fixUrl(it.selectFirst("a")!!.attr("href"))) {
                     this.posterUrl = fixUrl(poster)
                     addDubStatus(getDubStatus(title))
-                    this.posterHeaders = if (poster.contains(mainUrl)) cloudflareKiller.getCookieHeaders(mainUrl).toMap() else emptyMap<String, String>()
                 }
             }
 
             items.add(HomePageList(name, home))
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {
@@ -111,7 +110,6 @@ class LatAnimeProvider : MainAPI() {
                     if (title.contains("Latino") || title.contains("Castellano")) EnumSet.of(
                             DubStatus.Dubbed
                     ) else EnumSet.of(DubStatus.Subbed),
-                    posterHeaders = if (image.contains(mainUrl)) cloudflareKiller.getCookieHeaders(mainUrl).toMap() else emptyMap<String, String>()
             )
         }
     }
@@ -143,7 +141,6 @@ class LatAnimeProvider : MainAPI() {
             showStatus = status
             plot = description
             tags = genres
-            posterHeaders = if (poster.contains(mainUrl)) cloudflareKiller.getCookieHeaders(mainUrl).toMap() else emptyMap<String, String>()
         }
     }
 

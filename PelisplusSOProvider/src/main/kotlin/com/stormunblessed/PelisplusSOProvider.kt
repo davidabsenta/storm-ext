@@ -10,6 +10,7 @@ import java.util.*
 import com.lagradost.cloudstream3.utils.loadExtractor
 
 
+@Suppress("DEPRECATION")
 class PelisplusSOProvider : MainAPI() {
     override var mainUrl = "https://pelisplusgo.vip"
     override var name = "Pelisplus.so"
@@ -61,8 +62,8 @@ class PelisplusSOProvider : MainAPI() {
             }
         })
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

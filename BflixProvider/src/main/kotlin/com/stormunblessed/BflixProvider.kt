@@ -13,6 +13,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONObject
 import org.jsoup.Jsoup
 
+@Suppress("DEPRECATION")
 open class BflixProvider : MainAPI() {
     override var mainUrl = "https://bflix.ru"
     override var name = "Bflix"
@@ -173,8 +174,8 @@ open class BflixProvider : MainAPI() {
             items.add(HomePageList(name, test))
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
 

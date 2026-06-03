@@ -12,6 +12,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+@Suppress("DEPRECATION")
 class JKAnimeProvider : MainAPI() {
     companion object {
         fun getType(t: String): TvType {
@@ -90,8 +91,8 @@ class JKAnimeProvider : MainAPI() {
             items.add(HomePageList(name, home))
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     /* data class MainSearch(

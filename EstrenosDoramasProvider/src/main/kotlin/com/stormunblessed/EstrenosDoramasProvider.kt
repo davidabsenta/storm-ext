@@ -9,6 +9,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+@Suppress("DEPRECATION")
 class EstrenosDoramasProvider : MainAPI() {
     companion object {
         fun getType(t: String): TvType {
@@ -55,8 +56,8 @@ class EstrenosDoramasProvider : MainAPI() {
             items.add(HomePageList(name, home))
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

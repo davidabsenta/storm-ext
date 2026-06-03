@@ -10,6 +10,7 @@ import com.lagradost.cloudstream3.utils.getQualityFromName
 import com.lagradost.cloudstream3.utils.loadExtractor
 import java.util.*
 
+@Suppress("DEPRECATION")
 class AnimeflvIOProvider:MainAPI() {
     override var mainUrl = "https://animeflv.io" //Also scrapes from animeid.to
     override var name = "Animeflv.io"
@@ -60,7 +61,7 @@ class AnimeflvIOProvider:MainAPI() {
         }
 
         if (items.size <= 0) throw Exception("Error loading")
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

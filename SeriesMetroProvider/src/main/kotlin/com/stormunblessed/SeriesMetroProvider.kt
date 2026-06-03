@@ -4,6 +4,7 @@ import com.lagradost.cloudstream3.*
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class SeriesMetroProvider: MainAPI() {
     override var mainUrl = "https://metroseries.net"
     override var name = "SeriesMetro"
@@ -62,7 +63,7 @@ class SeriesMetroProvider: MainAPI() {
             }
             items.add(HomePageList(name, home))
         }
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

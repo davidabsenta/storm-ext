@@ -6,6 +6,7 @@ import com.lagradost.cloudstream3.network.CloudflareKiller
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class SoloLatinoProvider : MainAPI() {
     override var mainUrl = "https://sololatino.net"
     override var name = "SoloLatino"
@@ -52,7 +53,7 @@ class SoloLatinoProvider : MainAPI() {
             }
             items.add(HomePageList(name, home))
         }
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

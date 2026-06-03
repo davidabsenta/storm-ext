@@ -14,6 +14,7 @@ import com.lagradost.cloudstream3.utils.M3u8Helper.Companion.generateM3u8
 import com.lagradost.cloudstream3.utils.Qualities
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class AnimensionProvider:MainAPI() {
     override var mainUrl = "https://animension.to"
     override var name = "Animension"
@@ -52,7 +53,7 @@ class AnimensionProvider:MainAPI() {
             }
             items.add(HomePageList(name, home))
         }
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

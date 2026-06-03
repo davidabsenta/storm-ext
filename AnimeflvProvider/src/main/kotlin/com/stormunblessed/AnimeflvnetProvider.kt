@@ -7,6 +7,7 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import java.util.*
 
+@Suppress("DEPRECATION")
 class AnimeflvnetProvider : MainAPI() {
     companion object {
         fun getType(t: String): TvType {
@@ -78,7 +79,7 @@ class AnimeflvnetProvider : MainAPI() {
             items.add(HomePageList(name, home))
         }
         if (items.size <= 0) throw Exception("Error loading")
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     data class SearchObject(

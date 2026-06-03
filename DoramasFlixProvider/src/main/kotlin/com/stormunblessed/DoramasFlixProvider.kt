@@ -9,6 +9,7 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.toRequestBody
 
+@Suppress("DEPRECATION")
 class DoramasFlixProvider:MainAPI() {
     companion object  {
         private const val doraflixapi = "https://doraflix.fluxcedene.net/api/gql"
@@ -142,8 +143,8 @@ class DoramasFlixProvider:MainAPI() {
         items.add(HomePageList("Doramas", home1!!))
         items.add(HomePageList("Peliculas", home2!!))
         items.add(HomePageList("Doramas 2", home3!!))
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     private fun tasa(

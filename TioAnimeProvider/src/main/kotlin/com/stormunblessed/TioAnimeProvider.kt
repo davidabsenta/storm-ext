@@ -7,6 +7,7 @@ import com.lagradost.cloudstream3.utils.AppUtils.parseJson
 import java.util.*
 import kotlin.collections.ArrayList
 
+@Suppress("DEPRECATION")
 class TioAnimeProvider:MainAPI() {
     companion object {
         fun getType(t: String): TvType {
@@ -74,8 +75,8 @@ class TioAnimeProvider:MainAPI() {
 
             items.add(HomePageList(name, home))
         }
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     data class SearchObject (

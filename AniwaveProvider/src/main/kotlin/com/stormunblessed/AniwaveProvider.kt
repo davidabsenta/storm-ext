@@ -15,6 +15,7 @@ import org.json.JSONObject
 import java.net.URLEncoder
 
 
+@Suppress("DEPRECATION")
 class AniwaveProvider : MainAPI() {
     override var mainUrl = "https://aniwave.to"
     override var name = "Aniwave/9Anime"

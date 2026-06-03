@@ -5,6 +5,7 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Document
 
+@Suppress("DEPRECATION")
 class LACartoonsProvider:MainAPI() {
     override var mainUrl = "https://www.lacartoons.com"
     override var name = "LACartoons"
@@ -33,7 +34,7 @@ class LACartoonsProvider:MainAPI() {
         val soup = app.get(mainUrl).document
         val home = soup.toSearchResult()
         items.add(HomePageList("Series", home))
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
     override suspend fun search(query: String): List<SearchResponse> {
         val doc = app.get("$mainUrl/?utf8=✓&Titulo=$query").document

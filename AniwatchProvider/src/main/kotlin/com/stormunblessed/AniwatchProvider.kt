@@ -33,6 +33,7 @@ import kotlin.system.measureTimeMillis
 
 private const val OPTIONS = "OPTIONS"
 
+@Suppress("DEPRECATION")
 class AniwatchProvider : MainAPI() {
     override var mainUrl = "https://aniwatch.to"
     override var name = "Aniwatch"

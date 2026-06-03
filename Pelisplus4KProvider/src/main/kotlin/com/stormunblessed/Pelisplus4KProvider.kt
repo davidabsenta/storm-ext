@@ -5,6 +5,7 @@ import com.lagradost.cloudstream3.utils.AppUtils.parseJson
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class Pelisplus4KProvider :MainAPI() {
     override var mainUrl = "https://ww3.pelisplus.to"
     override var name = "Pelisplus4K"
@@ -44,7 +45,7 @@ class Pelisplus4KProvider :MainAPI() {
             }
             items.add(HomePageList(name, home))
         }
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

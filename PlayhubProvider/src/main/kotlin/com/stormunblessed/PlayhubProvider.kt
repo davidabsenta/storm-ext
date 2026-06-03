@@ -6,6 +6,7 @@ import com.lagradost.cloudstream3.utils.AppUtils.parseJson
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class PlayhubProvider:MainAPI() {
     override var mainUrl = "https://playhublite.com"
     override var name = "Playhub"
@@ -90,8 +91,8 @@ class PlayhubProvider:MainAPI() {
             }
             items.add(HomePageList(name, home!!))
         }
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
     data class PlayhubSearchMain (
         @JsonProperty("movies" ) var movies : ArrayList<PlayhubSearchInfo>? = arrayListOf(),

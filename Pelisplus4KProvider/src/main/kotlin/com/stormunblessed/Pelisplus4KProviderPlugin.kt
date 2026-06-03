@@ -1,12 +1,12 @@
 package com.stormunblessed
 
 import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
-import com.lagradost.cloudstream3.plugins.Plugin
+import com.lagradost.cloudstream3.plugins.BasePlugin
 import android.content.Context
 
 @CloudstreamPlugin
-class Pelisplus4KProviderPlugin: Plugin() {
-    override fun load(context: Context) {
+class Pelisplus4KProviderPlugin: BasePlugin() {
+    override fun load() {
         // All providers should be added in this manner. Please don't edit the providers list directly.
         registerMainAPI(Pelisplus4KProvider())
     }

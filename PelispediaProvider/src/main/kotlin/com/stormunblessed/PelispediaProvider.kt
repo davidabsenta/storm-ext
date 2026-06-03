@@ -5,6 +5,7 @@ import com.lagradost.cloudstream3.LoadResponse.Companion.addDuration
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class PelispediaProvider:MainAPI() {
     override var mainUrl = "https://pelispedia.is"
     override var name = "Pelispedia"
@@ -44,7 +45,7 @@ class PelispediaProvider:MainAPI() {
             items.add(HomePageList(name, home))
         }
 
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

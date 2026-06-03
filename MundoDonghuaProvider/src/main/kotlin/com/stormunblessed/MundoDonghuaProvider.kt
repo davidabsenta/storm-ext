@@ -10,6 +10,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 
+@Suppress("DEPRECATION")
 class MundoDonghuaProvider : MainAPI() {
 
     override var mainUrl = "https://www.mundodonghua.com"
@@ -67,8 +68,8 @@ class MundoDonghuaProvider : MainAPI() {
             items.add(HomePageList(name, home))
         }
 
-        if (items.size <= 0) throw ErrorLoadingException()
-        return HomePageResponse(items)
+        if (items.size <= 0) throw Exception("Error loading")
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

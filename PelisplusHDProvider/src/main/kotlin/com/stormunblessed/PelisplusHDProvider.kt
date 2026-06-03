@@ -8,6 +8,7 @@ import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.utils.loadExtractor
 import org.jsoup.nodes.Element
 
+@Suppress("DEPRECATION")
 class PelisplusHDProvider:MainAPI() {
     override var mainUrl = "https://pelisplushd.bz"
     override var name = "PelisplusHD"
@@ -36,7 +37,7 @@ class PelisplusHDProvider:MainAPI() {
                 }
             ))
         }
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
     private fun Element.toSearchResult(): SearchResponse {
         val title = this.select(".listing-content p").text()

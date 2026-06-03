@@ -6,6 +6,7 @@ import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 import com.lagradost.cloudstream3.utils.AppUtils.parseJson
 
+@Suppress("DEPRECATION")
 class AnimeJlProvider : MainAPI() {
     override var mainUrl = "https://www.anime-jl.net"
     override var name = "AnimeJL"
@@ -44,7 +45,7 @@ class AnimeJlProvider : MainAPI() {
             }
             items.add(HomePageList(name, home))
         }
-        return HomePageResponse(items)
+        return newHomePageResponse(items)
     }
 
     override suspend fun search(query: String): List<SearchResponse> {

@@ -1,13 +1,13 @@
 package com.stormunblessed
 
 import com.lagradost.cloudstream3.plugins.CloudstreamPlugin
-import com.lagradost.cloudstream3.plugins.Plugin
+import com.lagradost.cloudstream3.plugins.BasePlugin
 import android.content.Context
 import android.os.Handler
 
 @CloudstreamPlugin
-class BflixProviderPlugin : Plugin() {
-    override fun load(context: Context) {
+class BflixProviderPlugin : BasePlugin() {
+    override fun load() {
         // All providers should be added in this manner. Please don't edit the providers list directly.
         registerMainAPI(BflixProvider())
         registerMainAPI(FmoviesToProvider())

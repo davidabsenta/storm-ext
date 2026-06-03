@@ -5,6 +5,7 @@ import com.lagradost.cloudstream3.network.CloudflareKiller
 import com.lagradost.cloudstream3.utils.ExtractorLink
 import com.lagradost.cloudstream3.utils.loadExtractor
 
+@Suppress("DEPRECATION")
 class EntrepeliculasyseriesProvider : MainAPI() {
     override var mainUrl = "https://entrepeliculasyseries.nz"
     override var name = "EntrePeliculasySeries"
