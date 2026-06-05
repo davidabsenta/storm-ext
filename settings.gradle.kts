@@ -1,11 +1,7 @@
 rootProject.name = "CloudstreamPlugins"
 
-val disabled = listOf<String>(
-    "AnimeJlProvider",
-    "AnimeflvProvider",
-    "AnimeflvIOProvider",
-    "AnimensionProvider"
-)
+// Tu script dinámico existente para incluir proveedores automáticamente
+val disabled = listOf("buildSrc")
 
 File(rootDir, ".").eachDir { dir ->
     if (!disabled.contains(dir.name) && File(dir, "build.gradle.kts").exists()) {
